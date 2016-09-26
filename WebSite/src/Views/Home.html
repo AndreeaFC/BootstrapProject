@@ -1,0 +1,18 @@
+﻿<h1 ng-bind="title"></h1>
+
+<form novalidate class="simple-form">
+    <label for="title">Title: </label>
+    <input type="text" name="title" ng-model="newPost.title" /><br />
+    <label for="body">Body: </label>
+    <input type="text" name="body" ng-model="newPost.body" /><br />
+    <button type="button" ng-click="submit()">Add post</button>
+</form>
+<br />
+<br />
+
+<button type="button" ng-click="toggleList()">Toggle list</button>
+<div ng-show="showList" ng-repeat="post in posts"> <!-- track by $index -->
+    <h2 ng-bind="post.title" ng-click="go('/Post/' + post.id)"></h2>
+    <p ng-bind="post.body"></p>
+    <button ng-click="delete(post)">Delete</button>
+</div>
