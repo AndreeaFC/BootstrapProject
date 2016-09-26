@@ -13,19 +13,29 @@ angular.module("myWebsiteModule")
                 .when("/", {
                     templateUrl: "Views/Home.html",
                     controller: "HomeController",
-                    caseInsensitiveMatch: true
+                    caseInsensitiveMatch: true,
+                    activeTab: "Home"
                 })
 
                 .when("/About", {
                     templateUrl: "Views/About.html",
                     controller: "AboutController",
-                    caseInsensitiveMatch: true
+                    caseInsensitiveMatch: true,
+                    activeTab: "About"
                 })
 
-                .when("/Post/:id", {
+                .when("/Posts/:id", {
                     templateUrl: "Views/Post.html",
                     controller: "PostController",
-                    caseInsensitiveMatch: true
+                    caseInsensitiveMatch: true,
+                    activeTab: "Posts"
+                })
+            
+                .when("/Posts", {
+                    templateUrl: "Views/Posts.html",
+                    controller: "PostsController",
+                    caseInsensitiveMatch: true,
+                    activeTab: "Posts"
                 });
         }
     ]);
