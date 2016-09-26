@@ -10,7 +10,7 @@ angular.module("myWebsiteModule")
             $scope.addPost = function () {
                 $scope.posts.push($scope.newPost);
                 $scope.newPost = {};
-                $scope.savePost();
+                $scope.savePosts();
             }
         }
     ])
