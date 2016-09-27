@@ -24,7 +24,7 @@ angular.module("myWebsiteModule")
                     activeTab: "About"
                 })
 
-                .when("/Posts/:id", {
+                .when("/Post/:id", {
                     templateUrl: "Views/Post.html",
                     controller: "PostController",
                     caseInsensitiveMatch: true,

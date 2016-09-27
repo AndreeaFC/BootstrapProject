@@ -5,3 +5,8 @@
       width: 70%;
       margin: auto;
   }
+
+#wrap {
+    width: inherit;
+    word-wrap: break-word;
+}

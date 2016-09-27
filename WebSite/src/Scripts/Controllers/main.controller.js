@@ -7,13 +7,34 @@ angular.module("myWebsiteModule")
         function ($scope, $route) {
             $scope.$route = $route;
             $scope.posts = [];
+            $scope.nextAvailableId = 0;
 
-            // load posts
             $scope.loadPosts = function () {
                 var dataString = localStorage.getItem("posts");
 
-                if (dataString)
+                if (dataString) {
                     $scope.posts = JSON.parse(dataString);
+                }
+            }
+
+            $scope.loadNextAvailableId = function () {
+                var dataString = localStorage.getItem("nextAvailableId");
+
+                if (dataString) {
+                    $scope.nextAvailableId = JSON.parse(dataString);
+                }
+            }
+
+            $scope.retrieveNextAvailableId = function () {
+                var id = $scope.nextAvailableId++;
+                $scope.saveNextAvailableId();
+                return id;
+                //return $scope.nextAvailableId++;
+            }
+
+            $scope.saveNextAvailableId = function () {
+                var jsonString = JSON.stringify($scope.nextAvailableId);
+                localStorage.setItem("nextAvailableId", jsonString);
             }
 
             $scope.savePosts = function () {
@@ -21,19 +42,12 @@ angular.module("myWebsiteModule")
                 localStorage.setItem("posts", jsonString);
             }
 
+            $scope.loadNextAvailableId();
             $scope.loadPosts();
         }
 
 
-        //"$location",
-        //function ($scope, $location) {
-        //    $scope.posts = [];
-        //    $scope.nextAvailableId = 0;
-
-        //    $scope.getNextAvailableId = function () {
-        //        return $scope.nextAvailableId++;
-        //    }
-
+       
         //    // create 5 posts
         //    for (var i = 0; i < 5; ++i) {
         //        $scope.posts.push({
@@ -43,8 +57,4 @@ angular.module("myWebsiteModule")
         //        });
         //    }
 
-        //    $scope.go = function (url) {
-        //        $location.path(url);
-        //    }
-        //}
     ]);
